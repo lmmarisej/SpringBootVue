@@ -1,0 +1,52 @@
+application:
+  version: 1.0-SNAPSHOT
+  title: SpringBootVue
+
+logging:
+  level:
+    root: info
+
+spring:
+  banner:
+    location: classpath:banner/dev.txt
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      location: /Users/lmmarise.j/develop/java_web_project_list/SpringBootVue/app/target/temp
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  jackson:
+    default-property-inclusion: ALWAYS
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql:///springboot_vue?serverTimezone=UTC
+    username: root
+    password: lmmgo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL55Dialect
+
+server:
+  port: 8081
+  error:
+    path: /error
+  servlet:
+    context-path: /app
+    session:
+      timeout: 30m
+  ssl:
+    key-alias: tomcathttps
+    key-store: /Users/lmmarise.j/develop/java_web_project_list/SpringBootVue/app/src/main/resources/key/tomcathttps.p12.jks
+    key-password: 123456
+    key-store-provider: SUN

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lmmarise.vue.persistent.dao.mapper.BookMapper">
+    <insert id="addBook" useGeneratedKeys="true" keyProperty="id" parameterType="org.lmmarise.vue.persistent.org.pojo.Book">
+        <selectKey keyProperty="id" resultType="Integer" order="BEFORE">
+            select if(max(id) is null, 1, max(id) + 1) as newId from book
+        </selectKey>
+        INSERT INTO book(id, name, author) VALUES (#{id}, #{name}, #{author})
+    </insert>
+    <delete id="deleteBookById" parameterType="Integer">
+        DELETE
+        FROM book
+        WHERE id = #{id}
+    </delete>
+    <update id="updateBookById" parameterType="org.lmmarise.vue.persistent.org.pojo.Book">
+        UPDATE book
+        set name=#{name},
+            author=#{author}
+        WHERE id = #{id}
+    </update>
+    <select id="getBookById" parameterType="Integer" resultType="org.lmmarise.vue.persistent.org.pojo.Book">
+        SELECT *
+        FROM book
+        WHERE id = #{id}
+    </select>
+    <select id="getAllBooks" resultType="org.lmmarise.vue.persistent.org.pojo.Book">
+        SELECT *
+        FROM book
+    </select>
+</mapper>

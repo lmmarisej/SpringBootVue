@@ -1,0 +1,9 @@
+application:
+  version: 1.0-SNAPSHOT
+  title: SpringBootVue
+
+spring:
+  profiles:
+     active: dev
+#     active: prod
+#     active: debug

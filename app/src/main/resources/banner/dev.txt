@@ -1,0 +1,12 @@
+ _______________
+< ${AnsiColor.CYAN}Run, ${AnsiColor.RED}DEV MODE ${AnsiColor.DEFAULT}>
+< ${AnsiColor.MAGENTA}Version: ${AnsiColor.BLUE}[${application.version}] ${AnsiColor.DEFAULT}>
+< ${AnsiColor.MAGENTA}AppName: ${AnsiColor.BLUE}[${application.title}] ${AnsiColor.DEFAULT}>
+ ---------------
+       \    ____
+        \  /    \
+          | ^__^ |
+          | (oo) |______
+          | (__) |      )\/\
+           \____/|----w |
+                ||     ||
