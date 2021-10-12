@@ -1,8 +1,10 @@
 package org.lmmarise.vue.system.service;
 
-import org.lmmarise.vue.persistent.dao.jpa.BookJpaDao;
-import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.lmmarise.vue.persistent.dao.jpa.repository.BookJpaRepository;
+import org.lmmarise.vue.persistent.dao.jpa.repository1.BookJpaRepository1;
+import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -17,29 +19,36 @@ import java.util.List;
 public class BookJpaService {
 
     @Resource
-    private BookJpaDao bookDao;
+    private BookJpaRepository bookJpaRepository;
 
     public Book addBook(Book book) {
-        return bookDao.save(book);
+        return bookJpaRepository.save(book);
     }
 
     public Book getBook(Book book) {
-        return bookDao.getOne(book.getId());
+        return bookJpaRepository.getOne(book.getId());
     }
 
     public void updateBook(Book book) {
-        bookDao.save(book);
+        bookJpaRepository.save(book);
     }
 
     public void deleteBook(Book book) {
-        bookDao.delete(book);
+        bookJpaRepository.delete(book);
     }
 
     public List<Book> getAllBook() {
-        return bookDao.findAll();
+        return bookJpaRepository.findAll();
     }
 
     public Page<Book> getBookByPage(Pageable pageable) {
-        return bookDao.findAll(pageable);
+        return bookJpaRepository.findAll(pageable);
+    }
+
+    @Resource
+    private BookJpaRepository1 bookJpaRepository1;
+
+    public Page<Book> getBookByPage1(PageRequest pageable) {
+        return bookJpaRepository1.findAll(pageable);
     }
 }

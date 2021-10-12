@@ -1,7 +1,8 @@
 package org.lmmarise.vue.system.service;
 
-import org.lmmarise.vue.persistent.dao.mapper.BookMapper;
-import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.lmmarise.vue.persistent.dao.mybatis.mapper.BookMapper;
+import org.lmmarise.vue.persistent.dao.mybatis.mapper1.BookMapper1;
+import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,8 +14,12 @@ import java.util.List;
  */
 @Service
 public class BookMybatisService {
+
     @Resource
     private BookMapper bookDao;
+
+    @Resource
+    private BookMapper1 bookDao1;
 
     public int addBook(Book book) {
         return bookDao.addBook(book);
@@ -34,5 +39,9 @@ public class BookMybatisService {
 
     public List<Book> getAllBook() {
         return bookDao.getAllBooks();
+    }
+
+    public List<Book> getAllBook1() {
+        return bookDao1.getAllBooks();
     }
 }

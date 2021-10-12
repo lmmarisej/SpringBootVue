@@ -18,6 +18,7 @@ import java.io.Serializable;
 public class PageQuery implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    // 第一页传 0
     Integer page;   // 当前页
     Integer size;   // 页大小
 

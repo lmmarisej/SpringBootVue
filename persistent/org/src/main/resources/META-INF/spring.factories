@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    org.lmmarise.vue.persistent.org.pojo.OrgAutoConfiguration
+    org.lmmarise.vue.persistent.org.OrgAutoConfiguration

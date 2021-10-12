@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.org.pojo;
+package org.lmmarise.vue.persistent.org;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;

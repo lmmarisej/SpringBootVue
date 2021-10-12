@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.dao.jpa;
+package org.lmmarise.vue.persistent.dao.jpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

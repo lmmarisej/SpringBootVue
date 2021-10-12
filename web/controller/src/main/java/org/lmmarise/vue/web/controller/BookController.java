@@ -2,11 +2,11 @@ package org.lmmarise.vue.web.controller;
 
 import org.lmmarise.vue.common.domain.PageQuery;
 import org.lmmarise.vue.common.domain.Result;
-import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.lmmarise.vue.persistent.org.domain.Book;
 import org.lmmarise.vue.system.service.BookJpaService;
 import org.lmmarise.vue.system.service.BookJdbcService;
+import org.lmmarise.vue.system.service.BookMybatisService;
 import org.lmmarise.vue.web.bind.annotation.ApiJsonRestController;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +19,8 @@ import java.util.List;
  */
 @ApiJsonRestController
 public class BookController {
+
+    /*JDBC*/
 
     @Resource
     private BookJdbcService bookJdbcService;
@@ -48,17 +50,40 @@ public class BookController {
         return bookJdbcService.deleteBook(book);
     }
 
+    /*Mybatis*/
+
+    @Resource
+    private BookMybatisService bookMybatisService;
+
+    @GetMapping("/booksMybatis")
+    public Result getBooksMybatis() {
+        return Result.ok(bookMybatisService.getAllBook());
+    }
+
+    @GetMapping("/booksMybatis1")
+    public Result getBooksMybatis1() {
+        return Result.ok(bookMybatisService.getAllBook1());
+    }
+
+    /*JPA*/
+
     @Resource
     private BookJpaService bookJpaService;
 
     @PostMapping("/bookJpa")
-    public Book addBookJpa(@RequestBody Book book) {
-        return bookJpaService.addBook(book);
+    public Result addBookJpa(@RequestBody Book book) {
+        return Result.ok(bookJpaService.addBook(book));
     }
 
-    @PostMapping("/findAll")
+    @PostMapping("/findAllJpa")
     public Result findAllBookJpa(@RequestBody PageQuery page) {
         PageRequest pageable = PageRequest.of(page.getPage(), page.getSize());
         return Result.ok(bookJpaService.getBookByPage(pageable));
+    }
+
+    @PostMapping("/findAllJpa1")
+    public Result findAllBookJpa1(@RequestBody PageQuery page) {
+        PageRequest pageable = PageRequest.of(page.getPage(), page.getSize());
+        return Result.ok(bookJpaService.getBookByPage1(pageable));
     }
 }
