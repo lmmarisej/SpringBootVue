@@ -1,6 +1,6 @@
-package org.lmmarise.vue.persistent.dao.jdbc;
+package org.lmmarise.vue.persistent.dao.jdbc.dao;
 
-import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

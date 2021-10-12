@@ -1,7 +1,7 @@
 package org.lmmarise.vue.web.controller;
 
-import org.lmmarise.vue.persistent.org.pojo.Author;
-import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.lmmarise.vue.persistent.org.domain.Author;
+import org.lmmarise.vue.persistent.org.domain.Book;
 import org.lmmarise.vue.web.bind.annotation.ApiController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

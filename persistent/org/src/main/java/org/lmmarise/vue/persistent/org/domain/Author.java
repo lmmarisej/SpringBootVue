@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.org.pojo;
+package org.lmmarise.vue.persistent.org.domain;
 
 import lombok.Getter;
 import lombok.Setter;
