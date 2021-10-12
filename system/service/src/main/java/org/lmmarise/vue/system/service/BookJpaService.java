@@ -2,6 +2,8 @@ package org.lmmarise.vue.system.service;
 
 import org.lmmarise.vue.persistent.dao.jpa.BookJpaDao;
 import org.lmmarise.vue.persistent.org.pojo.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,5 +37,9 @@ public class BookJpaService {
 
     public List<Book> getAllBook() {
         return bookDao.findAll();
+    }
+
+    public Page<Book> getBookByPage(Pageable pageable) {
+        return bookDao.findAll(pageable);
     }
 }

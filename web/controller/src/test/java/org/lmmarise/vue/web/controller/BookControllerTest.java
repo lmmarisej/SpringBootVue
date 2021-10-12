@@ -3,6 +3,7 @@ package org.lmmarise.vue.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.lmmarise.vue.common.domain.PageQuery;
 import org.lmmarise.vue.persistent.org.pojo.Book;
 import org.lmmarise.vue.web.WebAppTest;
 import org.slf4j.Logger;
@@ -114,6 +115,20 @@ class BookControllerTest extends WebAppTest {
         MvcResult mvcResult = mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/bookJpa")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(content))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+        log.info(mvcResult.getResponse().getContentAsString());
+    }
+
+    @Test
+    void findAllBookJpa() throws Exception {
+        String content = objectMapper.writeValueAsString(PageQuery.builder().page(1).size(2).build());
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/findAll")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(content))
                 .andExpect(MockMvcResultMatchers.status().isOk())
