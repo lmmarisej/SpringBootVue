@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.lmmarise.vue.common.domain.PageQuery;
+import org.lmmarise.vue.web.controller.controller.BookController;
 import org.lmmarise.vue.persistent.org.domain.Book;
 import org.lmmarise.vue.web.WebAppTest;
 import org.slf4j.Logger;

@@ -44,6 +44,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: lmmgo
 
 server:
   port: 8081

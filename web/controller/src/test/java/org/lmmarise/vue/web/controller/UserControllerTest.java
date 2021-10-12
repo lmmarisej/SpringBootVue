@@ -2,6 +2,7 @@ package org.lmmarise.vue.web.controller;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.lmmarise.vue.web.controller.controller.UserController;
 import org.lmmarise.vue.web.WebAppTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

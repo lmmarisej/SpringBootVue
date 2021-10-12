@@ -17,6 +17,7 @@
         <module>persistent</module>
         <module>audit</module>
         <module>system</module>
+        <module>cache</module>
     </modules>
 
     <properties>

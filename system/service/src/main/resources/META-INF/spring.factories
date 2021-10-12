@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.lmmarise.vue.system.ServiceAutoConfiguration
+  org.lmmarise.vue.system.service.ServiceAutoConfiguration

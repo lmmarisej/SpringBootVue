@@ -2,7 +2,8 @@ package org.lmmarise.vue.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.lmmarise.vue.system.ServiceAutoConfiguration;
+import org.lmmarise.vue.system.service.ServiceAutoConfiguration;
+import org.lmmarise.vue.web.controller.WebAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;

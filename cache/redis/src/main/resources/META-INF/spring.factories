@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.lmmarise.vue.web.controller.WebAutoConfiguration
+  org.lmmarise.vue.cache.redis.RedisAutoConfiguration
