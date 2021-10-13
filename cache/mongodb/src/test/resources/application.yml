@@ -1,5 +1,7 @@
 spring:
   data:
+    jpa:
+      show-sql: true
     mongodb:
       authentication-database: admin
       database: test

@@ -1,6 +1,10 @@
 package org.lmmarise.vue.domain;
 
 import lombok.*;
+import org.lmmarise.vue.cache.mongodb.annotation.AutoIncKey;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import javax.persistence.*;
 
@@ -29,10 +33,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Document(collection = "book")
 public class Book extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @MongoId(targetType = FieldType.INT32)
+    @AutoIncKey
     public Integer id;
+    @AutoIncKey
+    public Long id1;
     private String name;
     private String author;
     private Float price;
