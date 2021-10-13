@@ -24,7 +24,8 @@ public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping // 对是否"/"不敏感
+    // @GetMapping // 对是否"/"不敏感
+    @GetMapping("/")
     public String user(Model model) {
         HashMap<String, String> info = (HashMap<String, String>) model.getAttribute("info");
         model.addAllAttributes(info);

@@ -38,7 +38,7 @@ public class UserControllerTest extends WebAppTest {
 
     @Test
     public void demo() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user"))
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();

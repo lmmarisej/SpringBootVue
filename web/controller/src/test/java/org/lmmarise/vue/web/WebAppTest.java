@@ -6,6 +6,8 @@ import org.lmmarise.vue.system.service.ServiceAutoConfiguration;
 import org.lmmarise.vue.web.controller.WebAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 

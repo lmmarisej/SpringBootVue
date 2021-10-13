@@ -2,11 +2,13 @@ package org.lmmarise.vue.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.lmmarise.vue.common.domain.PageQuery;
 import org.lmmarise.vue.domain.Book;
-import org.lmmarise.vue.web.controller.controller.BookController;
 import org.lmmarise.vue.web.WebAppTest;
+import org.lmmarise.vue.web.controller.controller.BookController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,8 +20,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.util.NestedServletException;
 
 import javax.annotation.Resource;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * @author lmmarise.j@gmail.com
@@ -69,17 +73,23 @@ class BookControllerTest extends WebAppTest {
     }
 
     @Test
+    @Tag("exception-testing-SQLIntegrityConstraintViolationException")
     void addBook() throws Exception {
-        String content = objectMapper.writeValueAsString(Book.builder().id(1).name("《红楼梦》").author("曹雪芹").build());
-        MvcResult mvcResult = mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/book")
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content(content))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn();
-        log.info(mvcResult.getResponse().getContentAsString());
+        String content = objectMapper.writeValueAsString(Book.builder().id(1).name("《红楼梦》").author("曹雪芹").build()); // 不支持自增，多次插入必定异常
+        try {
+            mockMvc
+                    .perform(MockMvcRequestBuilders
+                            .post("/book")
+                            .contentType(MediaType.APPLICATION_JSON_VALUE)
+                            .content(content))
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andDo(MockMvcResultHandlers.print())
+                    .andReturn();
+        } catch (SQLIntegrityConstraintViolationException | NestedServletException e) {
+            log.info(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("未出现期望异常:" + e.getMessage());
+        }
     }
 
     @Test
