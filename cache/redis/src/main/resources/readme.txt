@@ -1,0 +1,1 @@
+推荐open finder执行脚本。在idea执行，idea会有bug。

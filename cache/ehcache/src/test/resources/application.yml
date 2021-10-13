@@ -1,0 +1,25 @@
+spring:
+  redis:
+    cluster:
+      urls:
+        - 127.0.0.1:7001
+        - 127.0.0.1:7002
+        - 127.0.0.1:7003
+        - 127.0.0.1:7004
+        - 127.0.0.1:7005
+        - 127.0.0.1:7006
+        - 127.0.0.1:7007
+        - 127.0.0.1:7008
+        - 127.0.0.1:7009
+      poolConfig:
+        max-total: 9
+        max-idle: 9
+        max-wait-millis: -1
+        min-idle: 0
+
+redis-cli --cluster  create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 127.0.0.1:7007 127.0.0.1:7008 127.0.0.1:7009 --cluster-replicas 1
+
+# 使用Redis作为缓存  true   false 就使用 ehcache
+cache:
+#  redis: false
+  redis: true
