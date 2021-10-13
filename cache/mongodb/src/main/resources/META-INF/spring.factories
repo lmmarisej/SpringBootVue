@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    org.lmmarise.vue.persistent.org.OrgAutoConfiguration
+  org.lmmarise.vue.cache.mongodb.MongodbAutoConfiguration

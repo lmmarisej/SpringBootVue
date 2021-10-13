@@ -2,7 +2,7 @@ package org.lmmarise.vue.web.controller.controller;
 
 import org.lmmarise.vue.common.domain.PageQuery;
 import org.lmmarise.vue.common.domain.Result;
-import org.lmmarise.vue.persistent.org.domain.Book;
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.system.service.service.BookJpaService;
 import org.lmmarise.vue.system.service.service.BookJdbcService;
 import org.lmmarise.vue.system.service.service.BookMybatisService;

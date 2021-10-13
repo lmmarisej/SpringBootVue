@@ -1,8 +1,8 @@
 package org.lmmarise.vue.system.service.service;
 
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.persistent.dao.jpa.repository.BookJpaRepository;
 import org.lmmarise.vue.persistent.dao.jpa.repository1.BookJpaRepository1;
-import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

@@ -18,6 +18,7 @@
         <module>audit</module>
         <module>system</module>
         <module>cache</module>
+        <module>domain</module>
     </modules>
 
     <properties>

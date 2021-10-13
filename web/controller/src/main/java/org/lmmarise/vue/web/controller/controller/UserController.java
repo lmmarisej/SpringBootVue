@@ -1,7 +1,7 @@
 package org.lmmarise.vue.web.controller.controller;
 
-import org.lmmarise.vue.persistent.org.domain.Author;
-import org.lmmarise.vue.persistent.org.domain.Book;
+import org.lmmarise.vue.domain.Author;
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.web.controller.annotation.ApiController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

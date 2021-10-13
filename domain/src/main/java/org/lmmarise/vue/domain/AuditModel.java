@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.org.domain;
+package org.lmmarise.vue.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

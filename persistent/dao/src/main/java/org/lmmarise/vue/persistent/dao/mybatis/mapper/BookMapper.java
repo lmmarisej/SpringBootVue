@@ -1,7 +1,7 @@
 package org.lmmarise.vue.persistent.dao.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.lmmarise.vue.persistent.org.domain.Book;
+import org.lmmarise.vue.domain.Book;
 
 import java.util.List;
 

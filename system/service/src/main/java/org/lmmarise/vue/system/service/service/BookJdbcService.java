@@ -1,7 +1,7 @@
 package org.lmmarise.vue.system.service.service;
 
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.persistent.dao.jdbc.dao.BookJdbcDao;
-import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

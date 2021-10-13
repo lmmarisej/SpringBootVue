@@ -1,7 +1,7 @@
 package org.lmmarise.vue.persistent.dao.jpa.repository1;
 
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.persistent.dao.jpa.repository.BaseRepository;
-import org.lmmarise.vue.persistent.org.domain.Book;
 
 /**
  * @author lmmarise.j@gmail.com

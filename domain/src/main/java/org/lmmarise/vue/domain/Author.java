@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.org.domain;
+package org.lmmarise.vue.domain;
 
 import lombok.Getter;
 import lombok.Setter;

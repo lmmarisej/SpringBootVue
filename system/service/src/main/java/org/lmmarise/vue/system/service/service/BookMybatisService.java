@@ -1,8 +1,8 @@
 package org.lmmarise.vue.system.service.service;
 
+import org.lmmarise.vue.domain.Book;
 import org.lmmarise.vue.persistent.dao.mybatis.mapper.BookMapper;
 import org.lmmarise.vue.persistent.dao.mybatis.mapper1.BookMapper1;
-import org.lmmarise.vue.persistent.org.domain.Book;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
