@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class ControllerLogAspect {
     private static final Logger log = LoggerFactory.getLogger(ControllerLogAspect.class);
     
-    @Pointcut("execution(* org.lmmarise.vue.web.controller.*.*(..))")
+    @Pointcut("execution(* org.lmmarise.vue.web.controller.controller.*.*(..))")
     public void controllerLog() {
     }
 

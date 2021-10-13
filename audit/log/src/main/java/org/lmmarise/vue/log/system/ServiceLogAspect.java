@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class ServiceLogAspect {
     private static final Logger log = LoggerFactory.getLogger(ServiceLogAspect.class);
     
-    @Pointcut("execution(* org.lmmarise.vue.system.service.*.*(..))")
+    @Pointcut("execution(* org.lmmarise.vue.system.service.service.*.*(..))")
     public void serviceLog() {
     }
 
