@@ -61,7 +61,15 @@ INSERT INTO `user_role` VALUES ('4', '3', '3');
 SET FOREIGN_KEY_CHECKS=1;
 
 -- ----------------------------
+-- Records of menu
+-- ----------------------------
+INSERT INTO `menu` VALUES ('1', '/admin/**');
+INSERT INTO `menu` VALUES ('2', '/user/**');
+INSERT INTO `menu` VALUES ('3', '/db/**');
+
+-- ----------------------------
 -- Records of menu_role
 -- ----------------------------
 INSERT INTO `menu_role` VALUES ('1', '2');
 INSERT INTO `menu_role` VALUES ('2', '3');
+INSERT INTO `menu_role` VALUES ('3', '1');

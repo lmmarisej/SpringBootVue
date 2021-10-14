@@ -19,6 +19,8 @@
         <module>system</module>
         <module>cache</module>
         <module>domain</module>
+        <module>msg</module>
+        <module>mq</module>
     </modules>
 
     <properties>
