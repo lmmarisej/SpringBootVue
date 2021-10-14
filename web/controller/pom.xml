@@ -23,6 +23,16 @@
             <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.lmmarise.vue</groupId>
+            <artifactId>domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lmmarise.vue</groupId>
+            <artifactId>security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

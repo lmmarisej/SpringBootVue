@@ -14,8 +14,8 @@ import javax.sql.DataSource;
  * @author lmmarise.j@gmail.com
  * @since 2021/10/11 7:14 下午
  */
-@ComponentScan(basePackageClasses = {DaoAutoConfiguration.class})
 @Configuration
+@ComponentScan(basePackageClasses = {DaoAutoConfiguration.class})
 public class DaoAutoConfiguration {
 
     @Primary

@@ -1,4 +1,4 @@
-package org.lmmarise.cache.ehcache.config;
+package org.lmmarise.vue.cache.ehcache.config;
 
 import org.lmmarise.vue.cache.redis.config.RedisConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

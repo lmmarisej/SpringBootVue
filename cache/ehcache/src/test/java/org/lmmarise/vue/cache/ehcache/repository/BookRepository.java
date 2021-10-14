@@ -1,6 +1,6 @@
-package org.lmmarise.cache.ehcache.repository;
+package org.lmmarise.vue.cache.ehcache.repository;
 
-import org.lmmarise.cache.ehcache.generator.MyKeyGenerator;
+import org.lmmarise.vue.cache.ehcache.generator.MyKeyGenerator;
 import org.lmmarise.vue.domain.Book;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cache.annotation.CacheConfig;

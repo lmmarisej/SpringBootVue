@@ -1,8 +1,8 @@
-package org.lmmarise.cache.ehcache;
+package org.lmmarise.vue.cache.ehcache;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.lmmarise.cache.ehcache.repository.BookRepository;
+import org.lmmarise.vue.cache.ehcache.repository.BookRepository;
 import org.lmmarise.vue.domain.Book;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestApp.class)
 @EnableAutoConfiguration
-@ComponentScan("org.lmmarise.cache.ehcache.*")
+@ComponentScan("org.lmmarise.vue.cache.ehcache.*")
 public class TestApp {
 
     @Resource

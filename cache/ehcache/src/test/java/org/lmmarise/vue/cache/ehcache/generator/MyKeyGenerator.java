@@ -1,4 +1,4 @@
-package org.lmmarise.cache.ehcache.generator;
+package org.lmmarise.vue.cache.ehcache.generator;
 
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.stereotype.Component;
