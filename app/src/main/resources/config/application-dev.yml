@@ -92,3 +92,12 @@ server:
     key-store: /Users/lmmarise.j/develop/java_web_project_list/SpringBootVue/app/src/main/resources/key/tomcathttps.p12.jks
     key-password: 123456
     key-store-provider: SUN
+
+management:
+  endpoint:
+    health:
+      roles: ADMIN
+      status:
+        order: FATAL,DOWN,OUT_OF_SERVICE,UP,UNKNOWN
+        http-mapping:
+          FATAL: 503
