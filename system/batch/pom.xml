@@ -2,27 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>SpringBootVue</artifactId>
+        <artifactId>system</artifactId>
         <groupId>org.lmmarise.vue</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>system</artifactId>
-    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
 
-    <modules>
-        <module>service</module>
-        <module>scheduled</module>
-        <module>quartz</module>
-        <module>batch</module>
-    </modules>
+    <artifactId>batch</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+    </dependencies>
 </project>

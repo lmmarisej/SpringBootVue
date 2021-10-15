@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>app</artifactId>
+
     <packaging>jar</packaging>
 
     <properties>
@@ -55,11 +56,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.5</version>
+                <version>${dependency.spring-boot-maven-plugin}</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>build-info</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
