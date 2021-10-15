@@ -25,6 +25,11 @@
         </dependency>
         <dependency>
             <groupId>org.lmmarise.vue</groupId>
+            <artifactId>security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lmmarise.vue</groupId>
             <artifactId>log</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
