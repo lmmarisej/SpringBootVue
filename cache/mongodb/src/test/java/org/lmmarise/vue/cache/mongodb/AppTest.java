@@ -21,7 +21,7 @@ import java.util.List;
 @EntityScan("org.lmmarise.vue.persistent.org.domain")
 @EnableAutoConfiguration
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {MongodbAutoConfiguration.class}, properties = "spring.main.allow-bean-definition-overriding=true")
+@SpringBootTest(classes = {MongodbAutoConfiguration.class}, properties = "spring.main.allow-bean-definition-overroles_iding=true")
 public class AppTest {
 
     @Resource

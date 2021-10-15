@@ -6,6 +6,7 @@
     <modules>
         <module>scheduled</module>
         <module>quartz</module>
+        <module>batch</module>
     </modules>
 
     <parent>

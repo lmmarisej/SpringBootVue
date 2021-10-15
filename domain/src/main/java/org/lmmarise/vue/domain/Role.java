@@ -1,8 +1,7 @@
-package org.lmmarise.vue.security.model;
+package org.lmmarise.vue.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.lmmarise.vue.domain.AuditModel;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,14 +1,16 @@
 package org.lmmarise.vue.security;
 
-import org.lmmarise.vue.security.mapper.MenuMapper;
-import org.lmmarise.vue.security.model.Menu;
-import org.lmmarise.vue.security.model.Role;
+import org.lmmarise.vue.domain.Menu;
+import org.lmmarise.vue.domain.Role;
+import org.lmmarise.vue.persistent.dao.mybatis.mapper.MenuMapper;
 import org.lmmarise.vue.security.service.MybatisUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,7 @@ import java.util.List;
  * @author lmmarise.j@gmail.com
  * @since 2021/10/14 1:04 下午
  */
+@EnableWebSecurity
 @Configuration
 @ComponentScan(basePackageClasses = SecurityAutoConfiguration.class)
 public class SecurityAutoConfiguration {
@@ -32,12 +35,10 @@ public class SecurityAutoConfiguration {
     @Component
     static class MybatisFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
-        private final MenuMapper menuMapper;
-        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        @Autowired
+        private MenuMapper menuMapper;
 
-        public MybatisFilterInvocationSecurityMetadataSource(MenuMapper menuMapper) {
-            this.menuMapper = menuMapper;
-        }
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
 
         @Override
         public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {

@@ -1,8 +1,7 @@
-package org.lmmarise.vue.security.model;
+package org.lmmarise.vue.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.lmmarise.vue.domain.AuditModel;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,6 +14,6 @@ public class Menu extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String pattern;
-    @OneToMany
+    @ManyToMany
     private List<Role> roles;
 }

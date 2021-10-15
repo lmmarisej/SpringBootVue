@@ -5,10 +5,10 @@ create table menu
     pattern varchar(200) null
 );
 
-create table menu_role
+create table menu_roles
 (
-    mid int not null,
-    rid int not null
+    menu_id int not null,
+    roles_id int not null
 );
 
 create table role
@@ -29,12 +29,12 @@ create table user
     locked   tinyint(1)   null
 );
 
-create table user_role
+create table user_roles
 (
     id  int auto_increment
         primary key,
     uid int null,
-    rid int null
+    roles_id int null
 );
 
 -- ----------------------------
@@ -52,12 +52,12 @@ INSERT INTO `user` VALUES ('2', 'admin', '{noop}1', '1', '0');
 INSERT INTO `user` VALUES ('3', 'cxk', '{noop}1', '1', '0');
 
 -- ----------------------------
--- Records of user_role
+-- Records of user_roles
 -- ----------------------------
-INSERT INTO `user_role` VALUES ('1', '1', '1');
-INSERT INTO `user_role` VALUES ('2', '1', '2');
-INSERT INTO `user_role` VALUES ('3', '2', '2');
-INSERT INTO `user_role` VALUES ('4', '3', '3');
+INSERT INTO `user_roles` VALUES ('1', '1', '1');
+INSERT INTO `user_roles` VALUES ('2', '1', '2');
+INSERT INTO `user_roles` VALUES ('3', '2', '2');
+INSERT INTO `user_roles` VALUES ('4', '3', '3');
 SET FOREIGN_KEY_CHECKS=1;
 
 -- ----------------------------
@@ -68,8 +68,8 @@ INSERT INTO `menu` VALUES ('2', '/user/**');
 INSERT INTO `menu` VALUES ('3', '/db/**');
 
 -- ----------------------------
--- Records of menu_role
+-- Records of menu_roles
 -- ----------------------------
-INSERT INTO `menu_role` VALUES ('1', '2');
-INSERT INTO `menu_role` VALUES ('2', '3');
-INSERT INTO `menu_role` VALUES ('3', '1');
+INSERT INTO `menu_roles` VALUES ('1', '2');
+INSERT INTO `menu_roles` VALUES ('2', '3');
+INSERT INTO `menu_roles` VALUES ('3', '1');

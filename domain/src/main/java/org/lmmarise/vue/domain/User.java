@@ -1,8 +1,7 @@
-package org.lmmarise.vue.security.model;
+package org.lmmarise.vue.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.lmmarise.vue.domain.AuditModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +24,7 @@ public class User extends AuditModel implements UserDetails {
     private String password;
     private Boolean enabled = Boolean.TRUE;
     private Boolean locked;
-    @OneToMany
+    @ManyToMany
     private List<Role> roles;
 
     @Override

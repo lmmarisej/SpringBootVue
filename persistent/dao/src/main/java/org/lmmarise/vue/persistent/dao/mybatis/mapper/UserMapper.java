@@ -1,8 +1,8 @@
-package org.lmmarise.vue.security.mapper;
+package org.lmmarise.vue.persistent.dao.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.lmmarise.vue.security.model.Role;
-import org.lmmarise.vue.security.model.User;
+import org.lmmarise.vue.domain.Role;
+import org.lmmarise.vue.domain.User;
 
 import java.util.List;
 

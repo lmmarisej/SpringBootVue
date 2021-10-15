@@ -1,9 +1,7 @@
 package org.lmmarise.vue.security.service;
 
-import org.lmmarise.vue.security.mapper.UserMapper;
-import org.lmmarise.vue.security.model.User;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.lmmarise.vue.domain.User;
+import org.lmmarise.vue.persistent.dao.mybatis.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,8 +12,6 @@ import javax.annotation.Resource;
 /**
  * 定义当持久化层是Mybatis时的用户查找逻辑
  */
-@ConditionalOnBean(name = "sqlSessionFactoryBean")
-@MapperScan(value = {"org.lmmarise.vue.security.mapper"}, sqlSessionFactoryRef = "sqlSessionFactoryBean")
 @Service
 public class MybatisUserDetailsService implements UserDetailsService {
 

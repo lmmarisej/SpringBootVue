@@ -33,6 +33,11 @@
             <artifactId>log</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.lmmarise.vue</groupId>
+            <artifactId>actuator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,4 +45,22 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!--加入插件，手动生成build-info：https://127.0.0.1:8081/app/actuator/info-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.5.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

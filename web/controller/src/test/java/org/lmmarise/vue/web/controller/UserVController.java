@@ -27,7 +27,6 @@ public class UserVController {
                                 @RequestBody User user,
                                 BindingResult result    // 对验证信息的封装
     ) {
-
         List<String> errors = new ArrayList<>();
         if (result.hasErrors()) {
             List<ObjectError> allErrors = result.getAllErrors();
