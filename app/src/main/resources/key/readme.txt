@@ -6,3 +6,5 @@ tomcathttps
     密码
         123456
 
+需要把证书添加：
+sudo keytool -import -alias LL1 -keystore 【JDK路径】+/jre/lib/security/cacerts -file 【localhost.cer，访问浏览器拖出来】 -storepass changeit

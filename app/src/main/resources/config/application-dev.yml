@@ -65,6 +65,19 @@ spring:
         max-idle: 9
         max-wait-millis: -1
         min-idle: 0
+  boot:
+    admin:
+      client:
+        # 注册到 SBA Server
+        url: http://localhost:8088
+        # SBA Server 的密码
+#        username: admin
+#        password: admin
+        instance:
+          metadata:
+            # 将自己的配置发送到 SBA Server
+            user.name: admin
+            user.password: 1
 
 server:
   port: 8081

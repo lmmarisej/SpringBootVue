@@ -1,0 +1,14 @@
+server:
+  port: 8088
+
+spring:
+  # 配置SBA Client连接的安全账号密码
+  security:
+    user:
+      name: admin
+      password: 1
+  boot:
+    admin:
+      ui:
+        title: "应用监控管理"
+        brand: "<img src='assets/img/icon-spring-boot-admin.svg'><span>应用监控管理</span>"

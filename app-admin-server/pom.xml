@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>audit</artifactId>
+        <artifactId>SpringBootVue</artifactId>
         <groupId>org.lmmarise.vue</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>actuator</artifactId>
+    <artifactId>app-admin-server</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -20,29 +20,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.2.4</version>
         </dependency>
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
             <version>2.2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <!--通过actuator暴露git信息，手动生成-->
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>4.0.5</version>
-            </plugin>
-        </plugins>
-    </build>
 </project>
