@@ -36,7 +36,7 @@ import javax.persistence.*;
 @Document(collection = "book")
 public class Book extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @MongoId(targetType = FieldType.INT32)
     @AutoIncKey
     public Integer id;

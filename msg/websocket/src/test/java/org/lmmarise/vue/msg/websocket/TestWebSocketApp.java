@@ -10,10 +10,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @since 2021/10/14 6:54 下午
  */
 @SpringBootApplication
-public class App {
+public class TestWebSocketApp {
 
     public static void main(String[] args) {
-        SpringApplicationBuilder builder = new SpringApplicationBuilder(App.class);
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(TestWebSocketApp.class);
         builder.run(args);
     }
 }

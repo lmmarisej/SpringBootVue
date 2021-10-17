@@ -5,7 +5,7 @@
 <mapper namespace="org.lmmarise.vue.persistent.dao.mybatis.mapper.MenuMapper">
     <resultMap id="BaseResultMap" type="org.lmmarise.vue.domain.Menu">
         <id property="id" column="id"/>
-        <result property="pattern" column="pattern"/>
+        <result property="path" column="pattern"/>
         <collection property="roles" ofType="org.lmmarise.vue.domain.Role">
             <id property="id" column="roles_id"/>
             <result property="name" column="rname"/>

@@ -45,7 +45,7 @@ public class SecurityAutoConfiguration {
             String requestUrl = ((FilterInvocation) object).getRequestUrl();
             List<Menu> allMenus = menuMapper.getAllMenus();
             for (Menu menu : allMenus) {
-                if (antPathMatcher.match(menu.getPattern(), requestUrl)) {
+                if (antPathMatcher.match(menu.getPath(), requestUrl)) {
                     List<Role> roles = menu.getRoles();
                     String[] roleArr = new String[roles.size()];
                     for (int i = 0; i < roleArr.length; i++) {

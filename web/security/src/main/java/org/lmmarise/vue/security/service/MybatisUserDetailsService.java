@@ -1,6 +1,5 @@
 package org.lmmarise.vue.security.service;
 
-import org.lmmarise.vue.domain.User;
 import org.lmmarise.vue.persistent.dao.mybatis.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,11 +19,10 @@ public class MybatisUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userMapper.loadUserByUsername(username);
+        UserDetails user = userMapper.loadUserByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("账户不存在!");
         }
-        user.setRoles(userMapper.getUserRolesByUid(user.getId()));
         return user;
     }
 }
