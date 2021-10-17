@@ -1,28 +1,29 @@
 package org.lmmarise.vue.security.service;
 
-import org.lmmarise.vue.persistent.dao.mybatis.mapper.UserMapper;
+import org.lmmarise.vue.domain.Hr;
+import org.lmmarise.vue.persistent.dao.jpa.service.HrService;
+import org.lmmarise.vue.security.domain.HrUserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 /**
  * 定义当持久化层是Mybatis时的用户查找逻辑
  */
 @Service
-public class MybatisUserDetailsService implements UserDetailsService {
+public class HrUserDetailsService implements UserDetailsService {
 
-    @Resource
-    private UserMapper userMapper;
+    @Autowired
+    private HrService hrService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails user = userMapper.loadUserByUsername(username);
-        if (user == null) {
+        Hr hr = hrService.loadUserByUsername(username);
+        if (hr == null) {
             throw new UsernameNotFoundException("账户不存在!");
         }
-        return user;
+        return new HrUserDetails(hr);
     }
 }

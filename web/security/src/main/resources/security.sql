@@ -7,7 +7,7 @@ create table menu
 
 create table menu_roles
 (
-    menu_id int not null,
+    menus_id int not null,
     roles_id int not null
 );
 

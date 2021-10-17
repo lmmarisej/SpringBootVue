@@ -1,14 +1,11 @@
 package org.lmmarise.vue.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * @author lmmarise.j@gmail.com
@@ -20,7 +17,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hr implements UserDetails {
+public class Hr {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -30,12 +27,13 @@ public class Hr implements UserDetails {
     private String address;
     private Boolean enabled = true;
     @Column(unique = true)
+    @JsonIgnore
     private String username;
     private String password;
     private String userface;
     private String remark;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Collection<Role> roles;     // 中间表由 Hr 来维护
 
     @OneToMany(mappedBy = "hr", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
@@ -68,42 +66,5 @@ public class Hr implements UserDetails {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

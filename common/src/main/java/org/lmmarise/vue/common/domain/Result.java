@@ -46,8 +46,8 @@ public class Result {
 
     public static Result ok(String msg, Object data) {
         Result result = new Result(Code.SUCCESS);
-        result.setData(data);
         result.setData(msg);
+        result.setData(data);
         return result;
     }
 
@@ -57,6 +57,26 @@ public class Result {
 
     public static Result fail(Code code) {
         return new Result(code);
+    }
+
+    public static Result fail(String msg) {
+        Result result = new Result(Code.FAIL);
+        result.setData(msg);
+        return result;
+    }
+
+    public static Result fail(Code code, String msg) {
+        Result result = new Result(code);
+        result.setData(msg);
+        return result;
+    }
+
+    public static Result fail(Integer code, String msg) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setCode(code);
+        result.setData(msg);
+        return result;
     }
 
     @Override
@@ -74,7 +94,7 @@ public class Result {
      * <p>
      * 注意：状态码需要与前端一一对应，因此不建议直接在接口响应自定义的状态码，状态码自定义统一在此一一枚举。
      */
-    enum Code {
+    public enum Code {
         SUCCESS(true, 200, "操作成功"),
         FAIL(false, 400, "操作失败"),
         UN_AUTHENTICATION(false, 401, "未认证"),

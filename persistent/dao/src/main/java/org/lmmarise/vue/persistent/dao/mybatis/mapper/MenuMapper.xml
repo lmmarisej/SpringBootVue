@@ -19,7 +19,7 @@
         insert into menu(rolePattern) values ( #{rolePattern} )
     </insert>
     <insert id="saveMenuRole">
-        insert into menu_roles(roles_id, menu_id) values ( #{menuId}, #{roleId} )
+        insert into role_menus(roles_id, menus_id) values ( #{menuId}, #{roleId} )
     </insert>
     <insert id="saveRole" useGeneratedKeys="true" parameterType="java.lang.String">
         <selectKey keyProperty="topId" order="AFTER" resultType="java.lang.Integer">
@@ -28,9 +28,9 @@
         insert into role(name) values ( #{roleName} )
     </insert>
     <select id="getAllMenus" resultMap="BaseResultMap">
-        SELECT m.*, r.id AS roles_id, r.name AS rname, r.nameZh AS rnameZh
+        SELECT m.*, r.id AS roles_id, r.name AS rname, r.name_zh AS rnameZh
         FROM menu m
-                 LEFT JOIN menu_roles mr ON m.`id` = mr.`menu_id`
+                 LEFT JOIN role_menus mr ON m.`id` = mr.`menus_id`
                  LEFT JOIN role r ON mr.`roles_id` = r.`id`
     </select>
     <select id="getRoleIdByName" resultType="java.lang.Integer" parameterType="string">
