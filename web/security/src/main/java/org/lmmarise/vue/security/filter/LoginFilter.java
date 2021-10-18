@@ -1,11 +1,8 @@
 package org.lmmarise.vue.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.lmmarise.vue.domain.Hr;
-import org.lmmarise.vue.security.service.HrUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 认证
+ *
  * @author lmmarise.j@gmail.com
  * @since 2021/10/18 1:12 上午
  */
@@ -40,24 +39,29 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     ObjectMapper om = new ObjectMapper();
 
+    /**
+     * 试图登录的逻辑
+     */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (!request.getMethod().equals("POST")) {
+            // 异常抛出，将被登录失败回调给捕获 @see AbstractAuthenticationProcessingFilter.failureHandler
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
         String verify_code = (String) request.getSession().getAttribute("verify_code");
 
-        if (request.getContentType().contains(MediaType.APPLICATION_JSON_VALUE) ||
+        if (request.getContentType() != null || request.getContentType().contains(MediaType.APPLICATION_JSON_VALUE) ||
                 request.getContentType().contains(MediaType.APPLICATION_JSON_UTF8_VALUE)) {
             Map<String, String> loginData = new HashMap<>();
             try {
                 loginData = om.readValue(request.getInputStream(), Map.class);
             } catch (IOException e) {
-                log.info(e.getMessage());
+                log.debug(e.getMessage());  // 用户传参错误，直接忽略
             } finally {
                 String code = loginData.get("code");
-                checkCode(response, code, verify_code);
+                checkCode(request, code, verify_code);
             }
+            // 通过用户名和密码作为认证凭证
             String username = loginData.get(getUsernameParameter());
             String password = loginData.get(getPasswordParameter());
             if (username == null) {
@@ -73,7 +77,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             sessionRegistry.registerNewSession(request.getSession(true).getId(), userDetails);
             return this.getAuthenticationManager().authenticate(authRequest);
         } else {
-            checkCode(response, request.getParameter("code"), verify_code);
+            checkCode(request, request.getParameter("code"), verify_code);
             return super.attemptAuthentication(request, response);
         }
     }
@@ -81,8 +85,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     /**
      * 校验登录用户输入的验证码
      */
-    public void checkCode(HttpServletResponse resp, String code, String verify_code) {
+    public void checkCode(HttpServletRequest req, String code, String verify_code) {
         if (verify_code == null || "".equals(code) || !verify_code.equalsIgnoreCase(code)) {
+            req.setAttribute("errorMsg", "验证码有误");
             throw new AuthenticationServiceException("验证码有误");
         }
     }
