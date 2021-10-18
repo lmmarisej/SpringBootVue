@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * 找出被访问资源所需要的权限
+ *
  * @author lmmarise.j@gmail.com
  * @since 2021/10/18 12:16 上午
  */

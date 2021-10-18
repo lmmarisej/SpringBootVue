@@ -46,7 +46,7 @@ public class Result {
 
     public static Result ok(String msg, Object data) {
         Result result = new Result(Code.SUCCESS);
-        result.setData(msg);
+        result.setMsg(msg);
         result.setData(data);
         return result;
     }
@@ -61,13 +61,13 @@ public class Result {
 
     public static Result fail(String msg) {
         Result result = new Result(Code.FAIL);
-        result.setData(msg);
+        result.setMsg(msg);
         return result;
     }
 
     public static Result fail(Code code, String msg) {
         Result result = new Result(code);
-        result.setData(msg);
+        result.setMsg(msg);
         return result;
     }
 
@@ -75,7 +75,7 @@ public class Result {
         Result result = new Result();
         result.setSuccess(false);
         result.setCode(code);
-        result.setData(msg);
+        result.setMsg(msg);
         return result;
     }
 

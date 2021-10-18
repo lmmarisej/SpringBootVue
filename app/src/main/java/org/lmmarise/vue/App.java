@@ -11,7 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @author lmmarise.j@gmail.com
  * @since 2021/10/10 1:31 下午
  */
-@SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
+@SpringBootApplication(exclude = {DruidDataSourceAutoConfigure.class})
 public class App {
 
     public static void main(String[] args) {
