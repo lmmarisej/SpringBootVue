@@ -52,19 +52,10 @@
 
     <build>
         <plugins>
-            <!--加入插件，手动生成build-info：https://127.0.0.1:8081/app/actuator/info-->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${dependency.spring-boot-maven-plugin}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build-info</goal>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.6</version>
             </plugin>
         </plugins>
     </build>
