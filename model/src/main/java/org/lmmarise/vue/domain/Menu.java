@@ -5,8 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -29,12 +30,31 @@ public class Menu extends AuditModel {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    private List<Role> roles = new ArrayList<>();       // 中间表由 Role 来维护
+    private Collection<Role> roles = new ArrayList<>();       // 中间表由 Role 来维护
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "parentMenuId")
     private Menu parentMenu;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "parentMenu", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-    private List<Menu> childrenMenu = new ArrayList<>();
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    private Collection<Menu> childrenMenu = new ArrayList<>();
+
+    @Transient
+    private Integer parentMenuId;
+
+    @Transient
+    private Collection<Integer> childrenMenuIds;
+
+    public Integer getParentMenuId() {
+        return parentMenu != null ? parentMenu.getId() : null;
+    }
+
+    public List<Integer> getChildrenMenuIds() {
+        return childrenMenu != null
+                ? childrenMenu.stream().map(AuditModel::getId).collect(Collectors.toList())
+                : null;
+    }
 }

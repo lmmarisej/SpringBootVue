@@ -11,8 +11,8 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.util.AntPathMatcher;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 找出被访问资源所需要的权限
@@ -37,12 +37,9 @@ public class HrFilterInvocationSecurityMetadataSource implements FilterInvocatio
         List<Menu> allMenus = menuService.getAllMenus();
         for (Menu menu : allMenus) {
             if (antPathMatcher.match(menu.getPath(), requestUrl)) {
-                List<Role> roles = menu.getRoles();
-                String[] roleArr = new String[roles.size()];
-                for (int i = 0; i < roleArr.length; i++) {
-                    roleArr[i] = roles.get(i).getName();
-                }
-                return SecurityConfig.createList(roleArr);
+                Collection<Role> roles = menu.getRoles();
+                String[] roleNames = roles.stream().map(Role::getName).distinct().toArray(String[]::new);
+                return SecurityConfig.createList(roleNames);
             }
         }
         return SecurityConfig.createList("ROLE_LOGIN");
