@@ -18,7 +18,7 @@
         <module>audit</module>
         <module>system</module>
         <module>cache</module>
-        <module>domain</module>
+        <module>model</module>
         <module>msg</module>
         <module>mq</module>
         <module>app-admin-server</module>

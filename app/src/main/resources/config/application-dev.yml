@@ -78,6 +78,8 @@ spring:
             # 将自己的配置发送到 SBA Server
             user.name: admin
             user.password: 1
+  security:
+    checkCode: false
 
 server:
   port: 8081

@@ -22,6 +22,6 @@ public class Role extends AuditModel {
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Collection<Hr> hrs;         // 中间表由 Hr 来维护
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Collection<Menu> menus;     // 中间表由 Role 来维护
 }

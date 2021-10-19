@@ -1,8 +1,8 @@
 package org.lmmarise.vue.security.service;
 
 import org.lmmarise.vue.domain.Hr;
-import org.lmmarise.vue.persistent.dao.jpa.service.HrService;
 import org.lmmarise.vue.security.domain.HrUserDetails;
+import org.lmmarise.vue.system.service.service.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

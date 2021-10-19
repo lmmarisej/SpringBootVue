@@ -16,7 +16,7 @@ public class AnonymousVoter implements AccessDecisionVoter<Object> {
 
     @Override
     public int vote(Authentication authentication, Object object, Collection<ConfigAttribute> attributes) {
-        return 0;
+        return ACCESS_ABSTAIN;
     }
 
     @Override

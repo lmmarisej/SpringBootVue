@@ -1,7 +1,5 @@
 package org.lmmarise.vue.security.vote;
 
-import org.springframework.security.access.AccessDecisionVoter;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.vote.AuthenticatedVoter;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -37,7 +35,7 @@ public class HrUrlDecisionVote extends AuthenticatedVoter {
             String needRole = ca.getAttribute();
             if ("ROLE_LOGIN".equals(needRole)) {
                 if (authentication instanceof AnonymousAuthenticationToken) {
-                    return AccessDecisionVoter.ACCESS_DENIED;
+                    return ACCESS_DENIED;
                 }
                 continue;
             }
@@ -46,9 +44,9 @@ public class HrUrlDecisionVote extends AuthenticatedVoter {
                     continue a;
                 }
             }
-            return AccessDecisionVoter.ACCESS_DENIED;        // 投出反对票
+            return ACCESS_DENIED;        // 投出反对票
         }
-        return AccessDecisionVoter.ACCESS_GRANTED;
+        return ACCESS_GRANTED;
     }
 
     @Override

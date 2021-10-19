@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.dao.jpa.service;
+package org.lmmarise.vue.system.service.service;
 
 import org.lmmarise.vue.domain.Hr;
 import org.lmmarise.vue.persistent.dao.jpa.repository.HrRepository;
@@ -16,6 +16,14 @@ public class HrService {
     private HrRepository hrRepository;
 
     public Hr loadUserByUsername(String username) {
+        return getHrByUsername(username);
+    }
+
+    public Hr getHrByUsername(String username) {
         return hrRepository.findHrByUsername(username);
+    }
+
+    public Hr getHrById(Integer id) {
+        return hrRepository.findById(id).orElse(null);
     }
 }

@@ -36,7 +36,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 定义需要认证的URL，以及组合认证授权等功能
@@ -71,6 +70,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();  // 支持根据前缀判断加密方式
     }
 
+    /**
+     * 设置 parent:AuthenticationManager 的验证源，当 http:HttpSecurity 中的 AuthenticationProvider 验证失败，都会使用 parent 来验证
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 将查询用户 UserDetails 的 Service 交给 AuthenticationManager 去使用

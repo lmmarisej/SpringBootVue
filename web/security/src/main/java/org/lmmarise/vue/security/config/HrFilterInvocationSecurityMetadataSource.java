@@ -2,7 +2,7 @@ package org.lmmarise.vue.security.config;
 
 import org.lmmarise.vue.domain.Menu;
 import org.lmmarise.vue.domain.Role;
-import org.lmmarise.vue.persistent.dao.jpa.service.MenuService;
+import org.lmmarise.vue.system.service.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.ConfigAttribute;

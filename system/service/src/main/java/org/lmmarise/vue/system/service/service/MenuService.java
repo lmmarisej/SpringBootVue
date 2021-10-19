@@ -1,4 +1,4 @@
-package org.lmmarise.vue.persistent.dao.jpa.service;
+package org.lmmarise.vue.system.service.service;
 
 import org.lmmarise.vue.domain.Menu;
 import org.lmmarise.vue.persistent.dao.jpa.repository.MenuRepository;
@@ -19,6 +19,10 @@ public class MenuService {
 
     public List<Menu> getAllMenus() {
         return menuRepository.findAll();
+    }
+
+    public Menu getMenusByMenuId(Integer id) {
+        return menuRepository.findById(id).orElse(null);
     }
 
 }

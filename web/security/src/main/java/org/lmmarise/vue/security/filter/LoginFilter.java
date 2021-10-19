@@ -1,8 +1,10 @@
 package org.lmmarise.vue.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,6 +33,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final SessionRegistry sessionRegistry;
     private final UserDetailsService userDetailsService;
+
+    @Value("${spring.security.checkCode}")
+    private Boolean checkCode = true;
 
     public LoginFilter(SessionRegistry sessionRegistry, UserDetailsService userDetailsService) {
         this.sessionRegistry = sessionRegistry;
@@ -86,7 +91,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
      * 校验登录用户输入的验证码
      */
     public void checkCode(HttpServletRequest req, String code, String verify_code) {
-        if (verify_code == null || "".equals(code) || !verify_code.equalsIgnoreCase(code)) {
+        if (checkCode && (verify_code == null || "".equals(code) || !verify_code.equalsIgnoreCase(code))) {
             req.setAttribute("errorMsg", "验证码有误");
             throw new AuthenticationServiceException("验证码有误");
         }
