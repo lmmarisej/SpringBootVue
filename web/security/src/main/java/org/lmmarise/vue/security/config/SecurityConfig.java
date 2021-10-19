@@ -135,9 +135,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         loginFilter.setAuthenticationFailureHandler((request, response, exception) -> {
             response.setContentType("application/json;charset=utf-8");
             PrintWriter out = response.getWriter();
-            Result respFail = Result.fail(Result.Code.FAIL, "登录失败");
+            Result respFail = Result.fail(Result.Code.FAIL, exception.getMessage());
             if (request.getAttribute("errorMsg") != null) {
-                respFail.setMsg(exception.getMessage());
+                respFail.setMsg(request.getAttribute("errorMsg").toString());
             } else if (exception instanceof LockedException) {
                 respFail.setMsg("账户被锁定");
             } else if (exception instanceof CredentialsExpiredException) {

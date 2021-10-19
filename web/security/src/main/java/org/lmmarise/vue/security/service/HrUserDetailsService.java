@@ -22,7 +22,7 @@ public class HrUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Hr hr = hrService.loadUserByUsername(username);
         if (hr == null) {
-            throw new UsernameNotFoundException("账户不存在!");
+            throw new UsernameNotFoundException("账号不存在");
         }
         return new HrUserDetails(hr);
     }
