@@ -59,11 +59,11 @@ public class Hr extends AuditModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hr hr = (Hr) o;
-        return Objects.equals(name, hr.name);
+        return Objects.equals(username, hr.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(username);
     }
 }
