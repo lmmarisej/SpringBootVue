@@ -50,8 +50,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         }
         String verify_code = (String) request.getSession().getAttribute("verify_code");
 
-        if (request.getContentType() != null || request.getContentType().contains(MediaType.APPLICATION_JSON_VALUE) ||
-                request.getContentType().contains(MediaType.APPLICATION_JSON_UTF8_VALUE)) {
+        String contentType = request.getContentType();
+        if (contentType != null && (contentType.contains(MediaType.APPLICATION_JSON_VALUE) || contentType.contains(MediaType.APPLICATION_JSON_UTF8_VALUE))) {
             Map<String, String> loginData = new HashMap<>();
             try {
                 loginData = om.readValue(request.getInputStream(), Map.class);
