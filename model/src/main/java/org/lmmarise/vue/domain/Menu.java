@@ -6,8 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -32,7 +30,18 @@ public class Menu extends AuditModel {
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private Collection<Role> roles = new HashSet<>();       // 中间表由 Role 来维护
 
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinTable(name = "menuChildren",
+            joinColumns = @JoinColumn(name = "children_menu_id"),   // referencedColumnName 默认为当前Menu表的 "id"
+            inverseJoinColumns = @JoinColumn(name = "menu_id"))
+    private Menu parentMenu;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "menuChildren")
     private Collection<Menu> childrenMenu = new HashSet<>();
+
+    public Integer getParentMenuId() {
+        return parentMenu != null ? parentMenu.getId() : null;
+    }
 }
