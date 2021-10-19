@@ -1,5 +1,6 @@
 package org.lmmarise.vue.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +27,11 @@ public class Department implements Serializable {
     private Boolean isParent;
     private Integer result;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Employee> employees;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "parentDepartment", fetch = FetchType.LAZY)
     private List<Department> childrenDepartment = new ArrayList<>();
 

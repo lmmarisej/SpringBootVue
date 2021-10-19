@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -17,9 +14,6 @@ import java.util.Date;
 @Setter
 @Entity
 public class MailSendLog extends AuditModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private String msgId;
     private Integer empId;
     // 0 消息投递中   1 投递成功   2 投递失败

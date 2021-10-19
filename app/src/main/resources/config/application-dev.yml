@@ -44,6 +44,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
+    open-in-view: true
   redis:
     database: 0
     host: 127.0.0.1

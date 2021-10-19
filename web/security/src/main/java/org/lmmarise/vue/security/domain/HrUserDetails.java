@@ -1,13 +1,17 @@
 package org.lmmarise.vue.security.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.SneakyThrows;
 import org.lmmarise.vue.domain.Hr;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Transient;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -18,12 +22,16 @@ import java.util.stream.Collectors;
  * @author lmmarise.j@gmail.com
  * @since 2021/10/18 12:48 上午
  */
+@Getter
+@Setter
 public class HrUserDetails extends Hr implements UserDetails {
 
-    private final Hr hr;
+    @JsonIgnore
+    private transient Hr hr;
 
     public HrUserDetails(Hr hr) {
         this.hr = hr;
+        BeanUtils.copyProperties(hr, this);
     }
 
     @Override

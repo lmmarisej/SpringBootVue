@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,25 +17,24 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hr {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class Hr extends AuditModel {
     private String name;
     private String phone;
     private String telephone;
     private String address;
     private Boolean enabled = true;
     @Column(unique = true)
-    @JsonIgnore
     private String username;
+    @JsonIgnore
     private String password;
     private String userface;
     private String remark;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Collection<Role> roles;     // 中间表由 Hr 来维护
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hr", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Collection<OpLog> opLogs;   // 中间表由 OpLog 来维护
 
